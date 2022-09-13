@@ -32,6 +32,8 @@ class InfluxdbReporter[S](registry: MetricRegistry,
                          (implicit executionContext: ExecutionContext)
   extends ScheduledReporter[S](registry, interval, writer, clientFactory, batcher, buffer, clock, name) {
 
+  private[influxdbreporter] def getName = name
+
   def withInterval(newInterval: FiniteDuration): InfluxdbReporter[S] =
     new InfluxdbReporter[S](registry, writer, clientFactory, newInterval, batcher, buffer, clock, name)
 

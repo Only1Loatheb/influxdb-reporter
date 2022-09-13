@@ -142,7 +142,8 @@ lazy val httpClientJavaWrapper = project.in(file("http-client-java-wrapper"))
     libraryDependencies ++= {
       Seq(
         "com.google.code.findbugs"    % "jsr305"                        % findbugsV,
-        "junit"                       % "junit"                         % junitV      % Test
+        "junit"                       % "junit"                         % junitV      % Test,
+        "org.scalatest"               %% "scalatest"                    % scalaTestV  % Test,
       )
     }
   )

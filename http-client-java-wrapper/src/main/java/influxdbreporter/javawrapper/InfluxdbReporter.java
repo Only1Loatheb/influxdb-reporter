@@ -29,8 +29,7 @@ import java.util.concurrent.TimeUnit;
 
 public class InfluxdbReporter {
 
-    private final influxdbreporter.core.InfluxdbReporter<String> reporter;
-
+    final influxdbreporter.core.InfluxdbReporter<String> reporter;
 
     public InfluxdbReporter(MetricRegistry registry,
                             MetricClientFactory<String> clientFactory,
@@ -72,7 +71,7 @@ public class InfluxdbReporter {
                 new InfluxBatcher<String>(),
                 new Some<>(dataBuffer),
                 Clock.defaultClock(),
-                name.isPresent() ? Option.empty() : Option.apply(name.get()),
+                name.isPresent() ? Option.apply(name.get()) : Option.empty(),
                 ExecutionContext.Implicits$.MODULE$.global()
         );
     }
